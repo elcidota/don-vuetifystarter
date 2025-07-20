@@ -19,6 +19,8 @@ Route::middleware('auth')->group(function () {
         return Inertia::render('Private');
     })->name('private');
     Route::get('/private/2', function () {
-        return Inertia::render('Private');
+        return Inertia::render('Private', [
+            'sample_data' => 'Private Page 2',
+        ]);
     })->name('private.edit');
 });
