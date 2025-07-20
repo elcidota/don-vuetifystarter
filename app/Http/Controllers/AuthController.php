@@ -15,12 +15,17 @@ class AuthController extends Controller
 
     public function auth(Request $request)
     {
-        $data = $request->validate([
+        [
+            'email' => $email,
+            'password' => $password,
+            'remember' => $remember
+        ] = $request->validate([
             'email' => 'required|email',
             'password' => 'required|min:6',
+            'remember' => 'boolean|nullable',
         ]);
 
-        if (auth()->attempt($data)) {
+        if (auth()->attempt(['email' => $email, 'password' => $password], $remember)) {
             return redirect()->intended('/');
         } else {
             return redirect()->back()->withInput($data)->withErrors([
