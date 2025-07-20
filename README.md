@@ -26,7 +26,7 @@ php artisan migrate --seed
 Start the development server with:
 
 ```bash
-npm run dev
+composer run dev
 ```
 
 This will start the development server on `http://localhost:8080`.
